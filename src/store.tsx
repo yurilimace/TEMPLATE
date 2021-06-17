@@ -4,7 +4,9 @@ const initialState = {
   sidebarShow: 'responsive'
 }
 
-const changeState = (state = initialState, { type, ...rest }) => {
+type Action = { type: string }
+
+function changeState (state = initialState, { type, ...rest }: Action) {
   switch (type) {
     case 'set':
       return {...state, ...rest }
