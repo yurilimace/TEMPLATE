@@ -1,5 +1,10 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { HashRouter, Route, Switch, Redirect, useLocation, useHistory } from 'react-router-dom';
+import { AuthState } from 'src/store/modules/auth/types';
+import { AppState } from 'src/store/types';
 
 const Login = React.lazy(() => import('../pages/login/Login'));
 const TheLayout = React.lazy(() => import('../containers/TheLayout'));
@@ -14,14 +19,40 @@ const loading = (
 
 
 const Router = () => {
+
+  const { signed } = useSelector<AppState, AuthState>(state => state.auth)
+
+  const RoutesFilter = () => {
+
+    const history = useHistory()
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+      if (!signed && pathname !== '/login') {
+        history.push("/login")
+      }
+    }, [signed, pathname])
+
+    return (
+      <>
+      {signed ? (
+        <Route path="/"  component={TheLayout} />
+      ) : (
+        <>
+        <Route exact path="/login" component={Login} />
+        </>
+      )}
+      </>
+    )
+  }
+
   return(
     <HashRouter>
           <React.Suspense fallback={loading}>
             <Switch>
-              <Route exact path="/login" component={Login} />
               <Route exact path="/404" component={Page404} />
               <Route exact path="/500" component={Page500} />
-              <Route path="/"  component={TheLayout} />
+              <RoutesFilter />
             </Switch>
           </React.Suspense>
       </HashRouter>
