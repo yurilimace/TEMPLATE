@@ -35,6 +35,7 @@ const Login = () => {
 
     if (data?.successfully) {
       const { payload: user } = data
+      localStorage.setItem("user", JSON.stringify(user));
       dispatch({
         type: actionTypes.LOGIN,
         user,
