@@ -14,7 +14,9 @@ export default function auth(
   switch (type) {
     case actionTypes.LOGIN:
       return { ...state, signed: Boolean(user), user, token };
-    default:
+    case actionTypes.LOGOUT:
       return { ...state, signed: false, user: null, token };
+    default:
+      return { ...state };
   }
 }
