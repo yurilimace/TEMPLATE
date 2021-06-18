@@ -6,13 +6,18 @@ import { ODataCargoResponse } from 'src/shared/interfaces/Cargo/types'
 
 export default function TestPage() {
 
-  const { data: cargos } = useRequest<ODataCargoResponse>(async () => await CargoRepository.listAll())
+  const { data: cargos, loading } = useRequest<ODataCargoResponse>(async () => await CargoRepository.listAll())
 
   useEffect(() => {
     console.log(cargos)
   }, [cargos])
 
   return (
-    <h1>página de teste!</h1>
+    loading ? <div>Carregando...</div> :
+    <ul>
+      {cargos && cargos.value.map((c, i) => (
+        <li key={i}>{c.descricao}</li>
+      ))}
+    </ul>
   )
 }
