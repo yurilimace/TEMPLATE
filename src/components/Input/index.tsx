@@ -37,13 +37,13 @@ const Input = ({name,label,className,desabilitado,...rest}:Props) => {
 
 
   return(
-    <div>
+    <>
       <Form.Label> {label} </Form.Label>
       <Form.Control  name={name} className={className} ref={inputRef} placeholder="ola teste" isInvalid={!!error} disabled={desabilitado} />
       {error && <Form.Text className="text-danger">
         {error}
     </Form.Text>}
-    </div>
+    </>
   )
 }
 
