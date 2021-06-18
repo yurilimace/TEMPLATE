@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -15,8 +15,18 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { useSelector } from 'react-redux'
+import { AppState } from 'src/store/types'
+import { AuthState } from 'src/store/modules/auth/types'
 
 const Login = () => {
+
+  const auth = useSelector<AppState, AuthState>(state => state.auth)
+
+  useEffect(() => {
+    console.log(auth)
+  }, [auth])
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
