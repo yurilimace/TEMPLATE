@@ -1,16 +1,16 @@
 import React from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { useRequest } from 'src/hooks/useRequest'
 import CargoRepository from 'src/services/backend/CargoRepository'
 import { ODataCargoResponse } from 'src/shared/interfaces/Cargo/types'
 
-export default function TestPage() {
+export default function ListingPage() {
 
   const { data: cargos, loading } = useRequest<ODataCargoResponse>(async () => await CargoRepository.listAll())
 
-  useEffect(() => {
-    console.log(cargos)
-  }, [cargos])
+  // useEffect(() => {
+  //   console.log(cargos)
+  // }, [cargos])
 
   return (
     loading ? <div>Carregando...</div> :
