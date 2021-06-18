@@ -15,17 +15,33 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from 'src/store/types'
 import { AuthState } from 'src/store/modules/auth/types'
+import AuthRepository from 'src/services/backend/AuthRepository'
+import { actionTypes } from 'src/store/modules/auth/actionTypes'
 
 const Login = () => {
 
+  const dispatch = useDispatch()
   const auth = useSelector<AppState, AuthState>(state => state.auth)
 
   useEffect(() => {
     console.log(auth)
   }, [auth])
+
+  async function signIn() {
+    const { data } = await AuthRepository.login()
+
+    if (data?.successfully) {
+      const { payload: user } = data
+      dispatch({
+        type: actionTypes.LOGIN,
+        user,
+        token: user.token
+      })
+    }
+  }
 
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
@@ -56,7 +72,7 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">Login</CButton>
+                        <CButton onClick={signIn} color="primary" className="px-4">Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
