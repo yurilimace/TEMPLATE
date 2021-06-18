@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 
-/services/backend/index.ts
+src/services/backend/index.ts
