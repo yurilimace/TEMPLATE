@@ -15,6 +15,7 @@ const TheHeaderDropdown = () => {
   const dispatch = useDispatch();
 
   function signOut() {
+    localStorage.removeItem("user");
     dispatch({
       type: actionTypes.LOGOUT,
     });
