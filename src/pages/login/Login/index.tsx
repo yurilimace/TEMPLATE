@@ -15,20 +15,13 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppState } from 'src/store/types'
-import { AuthState } from 'src/store/modules/auth/types'
+import { useDispatch } from 'react-redux'
 import AuthRepository from 'src/services/backend/AuthRepository'
 import { actionTypes } from 'src/store/modules/auth/actionTypes'
 
 const Login = () => {
 
   const dispatch = useDispatch()
-  const auth = useSelector<AppState, AuthState>(state => state.auth)
-
-  useEffect(() => {
-    console.log(auth)
-  }, [auth])
 
   async function signIn() {
     const { data } = await AuthRepository.login()
