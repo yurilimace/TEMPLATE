@@ -1,8 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { HashRouter, Route, Switch, Redirect, useLocation, useHistory } from 'react-router-dom';
+import { HashRouter, Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { AuthState } from 'src/store/modules/auth/types';
 import { AppState } from 'src/store/types';
 
