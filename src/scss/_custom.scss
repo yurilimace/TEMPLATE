@@ -1,1 +1,33 @@
 // Here you can add other styles
+// Here you can add other styles
+
+$sidebarColor:green;
+$sidebarNavLinkColor:rgba(0,0,21,0.2);
+$sidebarNavActive:rgba(0,0,0,0.3);
+
+
+.c-sidebar{
+  background-color:$sidebarColor
+}
+
+.c-sidebar .c-sidebar-nav-link:hover{
+  background: $sidebarNavLinkColor;
+}
+
+
+.c-sidebar .c-sidebar-nav-link.c-active{
+  background:$sidebarNavActive;
+}
+
+.c-sidebar .c-sidebar-nav-dropdown.c-show{
+  background:$sidebarColor;
+}
+
+.c-sidebar .c-sidebar-nav-dropdown-toggle:hover{
+  background: $sidebarNavLinkColor;
+}
+
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle{
+  background:sidebarNavActive ;
+}
+
