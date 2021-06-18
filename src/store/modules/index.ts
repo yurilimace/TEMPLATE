@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import sidebarShow from "./sidebarShow/reducer";
+import sidebar from "./sidebar/reducer";
 import auth from "./auth/reducer";
 
 export default combineReducers({
-  sidebarShow,
+  sidebar,
   auth,
 });
