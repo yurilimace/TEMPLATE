@@ -16,12 +16,13 @@ const BasePage = () => {
   }
 
   return(
-    <div>
+    <div className="d-flex flex-column">
       <Form ref={formRef} onSubmit={handleSubmit}>
 
         <TextArea name="textarea" label="textarea" className="w-50 mt-3 mb-3" linhas={2}  />
-        <div className="d-flex w-100">
+        <div className="d-flex flex-column w-100">
         <Input name="input" label="input" className="w-50" />
+        <Input name="input" type="date" label="datas" className="w-50" />
         <SelectComponent/>
         </div>
         <button type="submit" > click me </button>

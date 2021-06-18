@@ -14,7 +14,7 @@ interface InputProps{
 
 type Props =  InputHTMLAttributes<HTMLInputElement> & InputProps
 
-const Input = ({name,label,className,desabilitado,...rest}:Props) => {
+const Input = ({name,label,className,desabilitado, type = "text", ...rest}:Props) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const { fieldName, defaultValue, registerField,error } = useField(name)
 
@@ -39,7 +39,7 @@ const Input = ({name,label,className,desabilitado,...rest}:Props) => {
   return(
     <>
       <Form.Label> {label} </Form.Label>
-      <Form.Control  name={name} className={className} ref={inputRef} placeholder="ola teste" isInvalid={!!error} disabled={desabilitado} />
+      <Form.Control name={name} type={type} className={className} ref={inputRef} placeholder="ola teste" isInvalid={!!error} disabled={desabilitado} />
       {error && <Form.Text className="text-danger">
         {error}
     </Form.Text>}
